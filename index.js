@@ -1,17 +1,25 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
+import livereload from "livereload";
+import connectLivereload from "connect-livereload";
 
 const app = express();
 const port = 3000;
 
-// Enable __dirname in ES Module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Setup live reload
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(new URL("public", import.meta.url).pathname);
 
-// Serve static files from 'public' directory
-app.use(express.static(path.join(__dirname, "public")));
+app.use(connectLivereload()); // Inject reload script
+
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
+});
+
+// Notify browser when a file changes
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
 });

@@ -1,5 +1,0 @@
-/*!
- * Core functionality for Snowplow Browser trackers v3.24.6 (http://bit.ly/sp-js)
- * Copyright 2022 Snowplow Analytics Ltd, 2010 Anthon Pang
- * Licensed under BSD-3-Clause
- */
