@@ -1,0 +1,23 @@
+<header class="main-header">
+  <div class="container">
+    <nav class="navbar">
+      <a class="logo" routerLink="/">MyApp</a>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

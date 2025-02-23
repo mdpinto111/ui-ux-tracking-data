@@ -1,0 +1,11 @@
+<div *ngIf="ticket" class="ticket-details-container">
+  <h2>Ticket Details (ID: {{ ticket.id }})</h2>
+  <p><strong>Sender:</strong> {{ ticket.senderName }}</p>
+  <p><strong>Receiver:</strong> {{ ticket.receiverName }}</p>
+  <p><strong>Message:</strong> {{ ticket.body }}</p>
+  <p><strong>Date:</strong> {{ ticket.date | date : "fullDate" }}</p>
+
+  <a routerLink="/">
+    <button>Back to List</button>
+  </a>
+</div>

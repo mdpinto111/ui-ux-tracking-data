@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "senderName": "Alice",
+    "receiverName": "Bob",
+    "body": "Meeting rescheduled to tomorrow.",
+    "date": "2025-02-20"
+  },
+  {
+    "id": 2,
+    "senderName": "Charlie",
+    "receiverName": "Dana",
+    "body": "Please review the attached document.",
+    "date": "2025-02-21"
+  },
+  {
+    "id": 3,
+    "senderName": "Eva",
+    "receiverName": "Frank",
+    "body": "Invoice for last month’s services.",
+    "date": "2025-02-22"
+  }
+]

@@ -1,0 +1,26 @@
+<div class="tickets-container">
+  <h2>Ticket List</h2>
+  <button (click)="openCreateTicketDialog()">Create New Ticket</button>
+
+  <div class="ticket" *ngFor="let ticket of tickets">
+    <p><strong>Sender:</strong> {{ ticket.senderName }}</p>
+    <p><strong>Receiver:</strong> {{ ticket.receiverName }}</p>
+    <p><strong>Message:</strong> {{ ticket.body }}</p>
+    <p><strong>Date:</strong> {{ ticket.date | date : "medium" }}</p>
+
+    <a [routerLink]="['/ticket', ticket.id]">
+      <button>Details</button>
+    </a>
+    <hr />
+  </div>
+</div>
+
+<!-- Dialog -->
+<app-create-ticket-dialog
+  *ngIf="showDialog"
+  (newTicketCreated)="addNewTicket($event)"
+  (closeDialog)="showDialog = false"
+>
+</app-create-ticket-dialog>
+
+<router-outlet></router-outlet>
