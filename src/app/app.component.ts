@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router'; // <-- Add RouterModule
+import {
+  RouterOutlet,
+  NavigationEnd,
+  RouterModule,
+  Router,
+  Event,
+} from '@angular/router'; // <-- Add RouterModule
 import { HeaderComponent } from './header/header.component';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import posthog from 'posthog-js';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +20,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor() {}
+  navigationEnd: Observable<NavigationEnd>;
+
+  constructor(public router: Router) {
+    this.navigationEnd = router.events.pipe(
+      filter((event: Event) => event instanceof NavigationEnd)
+    ) as Observable<NavigationEnd>;
+  }
+
+  ngOnInit() {
+    this.navigationEnd.subscribe((event: NavigationEnd) => {
+      posthog.capture('$pageview');
+    });
+  }
 }
