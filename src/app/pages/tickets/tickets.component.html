@@ -1,6 +1,8 @@
-<div class="tickets-container">
+<div class="tickets-container" id="tickets-container-id">
   <h2>Ticket List</h2>
-  <button (click)="openCreateTicketDialog()">Create New Ticket</button>
+  <button (click)="openCreateTicketDialog()" id="button-create-id">
+    Create New Ticket
+  </button>
 
   <div class="ticket" *ngFor="let ticket of tickets">
     <p><strong>Sender:</strong> {{ ticket.senderName }}</p>
